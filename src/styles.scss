@@ -1,1 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+
+.triangle{ 
+		width:0;
+		height:0;
+		position:absolute;
+		left:0;
+		bottom:0;
+		transform:translateY(99.9%);
+		z-index:13;
+		padding-bottom: 62px;
+    	padding-left: 100%;
+    	overflow: hidden;
+		&:after{
+			content: "";
+		    display: block;
+		    width: 0;
+		    height: 0;
+		    margin-left: -1920px;
+		    border-bottom: 62px solid transparent;
+		    border-left: 1920px solid #ffffff;
+		}
+	}
+.triangle-up{ 
+		width:0;
+		height:0;
+		position:absolute;
+		left:0;
+		bottom:0;
+		// transform:translateY(99.9%);
+		z-index:13;
+		padding-bottom: 62px;
+    	padding-left: 100%;
+    	overflow: hidden;
+		&:after{
+			content: "";
+		    display: block;
+		    width: 0;
+		    height: 0;
+		    margin-left: -1920px;
+		    border-top: 62px solid transparent;
+		    border-right: 1920px solid #ffffff;
+		}
+	}
+
+.animate-visible{
+	opacity:1 !important;
+}

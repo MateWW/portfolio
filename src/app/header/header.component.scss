@@ -1,0 +1,99 @@
+// @import "./hamburger.scss";
+
+.header-bg{
+	background:url(../../assets/img/head_bg.png) no-repeat ;
+	width:100%;
+	min-height:100vh;
+	background-size:cover;
+	background-position: center bottom;
+	position:relative;
+	.triangle-up{
+		&:after{
+			border-right-color:#efefef !important;
+		}
+	}
+	a.active{
+		text-decoration:underline;
+	}
+	.content-nav{
+		position:fixed;
+		width:100%;
+		display:none;
+		z-index:15;
+		transition:all .5s;
+		.navigation{
+
+			&>section>figure{
+				opacity:1;	
+				// transform:translateX(-10%);			
+				transition: all .5s;
+				&.left-nav-hidden{
+					transform:translateX(-10%);	
+					opacity:0;
+				}
+			}
+			
+			&>nav{
+				position:relative;
+				transition:all .5s;
+				&.right-nav-hidden{
+					transform:translateX(3%);	
+					opacity:0;
+				}
+			}
+
+		}
+		&.content-nav-background{
+			background:#ffffff;
+			color:#292b2c;
+			box-shadow: 0 0 2px #292b2c;
+			a{
+				color:#292b2c;
+			}
+			.logo{
+				background:url(../../assets/img/logo-black.png) no-repeat center;
+			}
+		}
+	}
+
+	.navigation{
+		.logo{
+			background:url(../../assets/img/logo.png) no-repeat center;
+			width:100%;
+			min-width:25px;
+			background-size:contain;
+			height:52px;
+		}
+		
+		a{
+			color:#ffffff;
+			font-size:16px;
+			font-family: 'Raleway', sans-serif;
+			font-weight:500;
+		}
+	}
+	
+
+	.head-photo-box{
+		height:50%;
+
+		figure{
+			width:100%;
+			height:40vh;
+			background:url(../../assets/img/head_photo.png) center no-repeat;
+			background-size:contain;
+		}
+
+	}
+
+	.head-box{
+		color:#ffffff;
+		h3 {
+			font-size:2.25rem;
+		}
+		p{
+			font-size:1rem;
+		}
+	}
+}
+
