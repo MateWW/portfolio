@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
   
   private controler;
   private headerElement:HTMLElement;
-  private scene;
+  public scene;
   private DD;
 
 

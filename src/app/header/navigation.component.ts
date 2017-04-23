@@ -1,4 +1,4 @@
-import { Component, AfterContentInit , ElementRef , ViewChild , Renderer2 , Input  , ViewChildren } from '@angular/core';
+import { Component, AfterContentInit , ElementRef , ViewChild , Renderer2 , Input  , ViewChildren , HostListener} from '@angular/core';
 import { ScrollmasterControllerService } from '../scrollmaster-controller.service';
 import { tween } from 'popmotion';
 
@@ -15,13 +15,34 @@ export class NavigationComponent implements AfterContentInit {
   @ViewChild('contentNav')
     contentNavbar:ElementRef;
 
+  @ViewChild("hamburgerButton")
+    hamburgerButton:ElementRef;
+
+
+  @HostListener('window:resize')
+  onResize(){
+    if(this.isHamburgerButtonVisible())
+      this.hamburgerIsVisible = false;
+    else 
+      this.hamburgerIsVisible = true;
+  }
+
+
   @Input("hostElement")
     header;
 
   @Input("scene")
     scene;
 
+  hamburgerIsVisible = true;
 
+  isHamburgerButtonVisible(){
+    return window.getComputedStyle(this.hamburgerButton.nativeElement).display !== 'none' ? true : false;
+  }
+
+  hamburgerClick(){
+    this.hamburgerIsVisible = !this.hamburgerIsVisible;
+  }
 
   getOffsetTop( elem ){
     return parseInt(window.getComputedStyle( elem ).height);
@@ -77,6 +98,8 @@ export class NavigationComponent implements AfterContentInit {
   constructor( private rd : Renderer2, private scrollmasterController : ScrollmasterControllerService ) { }
 
   ngAfterContentInit() {
+    this.onResize();
+
     this.scene.on("progress", event =>{
       this.update( this.scrollmasterController.getControler().scrollPos() );
     });

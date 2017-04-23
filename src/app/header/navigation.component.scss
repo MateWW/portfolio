@@ -129,6 +129,15 @@
 			
 			&:last-child{
 				overflow:hidden;
+				max-height:250px;
+				transition: all .5s;
+				&.nav-hidden{
+					max-height:0px;
+					padding:0;
+					margin:0;
+					opacity:0;
+					postion:absolute;
+				}
 			}
 		}
 	}

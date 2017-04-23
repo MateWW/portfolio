@@ -1,4 +1,4 @@
-import { Component, AfterViewInit , ElementRef , ViewChild , ViewChildren , EventEmitter, Output } from '@angular/core';
+import { Component, AfterViewInit , ElementRef , ViewChild , ViewChildren , QueryList } from '@angular/core';
 import * as ScrollMagic from "scrollmagic";
 import { ScrollmasterControllerService } from '../scrollmaster-controller.service';
 import { ChartComponent } from "./chart.component";
@@ -10,15 +10,11 @@ import { ChartComponent } from "./chart.component";
 })
 export class MySkillsComponent implements AfterViewInit {
   
-  // @Output("ref")
-  public ref = new EventEmitter();
-
-
   @ViewChild("mySkillsRow")
   scrollElement:ElementRef;
 
   @ViewChildren(ChartComponent)
-  chartComponent;
+  chartComponent:QueryList<any>;
 
   private scene;
 
@@ -43,8 +39,8 @@ export class MySkillsComponent implements AfterViewInit {
   addEvents(){
 
 		this.scene.on( "enter" , event => {
-		  this.chartComponent.forEach( (p) => p.render() );;
-
+		  this.chartComponent.forEach( (p) => p.render() );
+		  // this.chartComponent.changes.subscribe( a => console.log(a));
 		  this.scrollElement
 		   .nativeElement
 		   .classList

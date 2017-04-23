@@ -8,20 +8,23 @@
 			</section> 
 
 			<nav class="mt-3 col-10 hidden-md-up d-flex justify-content-end">
-				<div id="hamburger" >
+				<div id="hamburger"
+					(click) = "hamburgerClick()"
+					[ngClass] = '{"open" : hamburgerIsVisible}'
+				>
 					<span></span>
 					<span></span>
 					<span></span>
 				</div>
 			</nav>
 
-			<nav class="col-12 col-md-11 navbar mt-3">
+			<nav class="col-12 col-md-11 navbar mt-3" 
+			[ngClass] = '{"nav-hidden" : !hamburgerIsVisible }'>
 				
 				<ul class="nav flex-column flex-md-row
 				justify-content-center 
 				justify-content-md-end 
-				text-center"
-				>
+				text-center">
 					<li class="nav-link"><a href="#about_me">About Me</a></li>
 					<li class="nav-link"><a href="#education">My Education</a></li>
 					<li class="nav-link"><a href="#my_skills">My Skills</a></li>
@@ -40,15 +43,19 @@
 				<figure class="logo"></figure>
 			</section> 
 
-			<nav class="mt-3 col-10 hidden-md-up d-flex justify-content-end right-nav-hidden">	
-				<div id="hamburger" ">
+			<nav #hamburgerButton class="mt-3 col-10 hidden-md-up d-flex justify-content-end right-nav-hidden">	
+				<div  id="hamburger"
+					(click) = "hamburgerClick()"
+					[ngClass] = '{"open" : hamburgerIsVisible}'
+				>
 					<span></span>
 					<span></span>
 					<span></span>
 				</div>
 			</nav>
 
-			<nav class="col-12 col-md-11 navbar mt-3 right-nav-hidden">
+			<nav class="col-12 col-md-11 navbar mt-3" 
+			[ngClass] = '{"nav-hidden" : !hamburgerIsVisible }'>
 				
 				<ul class="nav flex-column flex-md-row
 				justify-content-center 
